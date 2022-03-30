@@ -2,17 +2,16 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i37-yN-Bzb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Payment Data TableVC-->
         <scene sceneID="eJD-Ys-KV6">
             <objects>
-                <tableViewController id="pMf-yD-7eJ" sceneMemberID="viewController">
+                <tableViewController id="pMf-yD-7eJ" customClass="PaymentDataTableVC" customModule="TakeMyMoney" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="lPH-VN-XOk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,56 +47,42 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UHz-WO-yvB">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UHz-WO-yvB">
                                                     <rect key="frame" x="20" y="11" width="374" height="53"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dRI-SI-a1c">
-                                                        <size key="itemSize" width="100" height="50"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dRI-SI-a1c">
+                                                        <size key="itemSize" width="115" height="51"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qtP-3I-wN7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="paymentCell" id="qtP-3I-wN7" customClass="PaymentTypeCollectionViewCell" customModule="TakeMyMoney" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="53"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mOI-Qo-1nM">
-                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="53"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McZ-Bu-zTl">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
-                                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                        <state key="normal" title="Credit Card">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </state>
-                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jA-1v-Wdv">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="53"/>
+                                                                        <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="McZ-Bu-zTl" secondAttribute="trailing" id="WzF-pJ-h7t"/>
-                                                                    <constraint firstItem="McZ-Bu-zTl" firstAttribute="top" secondItem="mOI-Qo-1nM" secondAttribute="top" id="j4m-Sa-r5r"/>
-                                                                    <constraint firstItem="McZ-Bu-zTl" firstAttribute="leading" secondItem="mOI-Qo-1nM" secondAttribute="leading" id="sOQ-OC-9DN"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="McZ-Bu-zTl" secondAttribute="bottom" id="zZ6-kr-54B"/>
+                                                                    <constraint firstItem="0jA-1v-Wdv" firstAttribute="top" secondItem="mOI-Qo-1nM" secondAttribute="top" id="2bU-w3-Iuj"/>
+                                                                    <constraint firstItem="0jA-1v-Wdv" firstAttribute="leading" secondItem="mOI-Qo-1nM" secondAttribute="leading" id="ADt-Se-4lm"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="0jA-1v-Wdv" secondAttribute="trailing" id="Rky-bO-jzL"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="0jA-1v-Wdv" secondAttribute="bottom" id="YaA-gb-xU3"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
-                                                            <size key="customSize" width="100" height="50"/>
-                                                        </collectionViewCell>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="n2o-qB-qgZ">
-                                                            <rect key="frame" x="137" y="0.0" width="100" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jl1-JS-Gwz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                            </collectionViewCellContentView>
-                                                        </collectionViewCell>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="n60-SO-Wrw">
-                                                            <rect key="frame" x="274" y="0.0" width="100" height="50"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oKF-R7-ZZb">
-                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                            </collectionViewCellContentView>
+                                                            <color key="backgroundColor" red="1" green="0.36470588240000001" blue="0.63529411759999999" alpha="0.79643522349999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <size key="customSize" width="100" height="53"/>
+                                                            <connections>
+                                                                <outlet property="typeName" destination="0jA-1v-Wdv" id="upp-EF-zNC"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -160,7 +145,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Valid Until" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mj0-du-WUx">
                                                             <rect key="frame" x="0.0" y="0.0" width="172" height="20"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
+                                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -301,8 +286,10 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="IYg-xv-LVY" firstAttribute="centerX" secondItem="iNb-n0-JCM" secondAttribute="centerX" id="MJX-aA-Es3"/>
                                                 <constraint firstAttribute="trailing" secondItem="EI6-B8-5El" secondAttribute="trailing" constant="10" id="TTv-Jk-sfh"/>
                                                 <constraint firstAttribute="trailing" secondItem="IYg-xv-LVY" secondAttribute="trailing" constant="10" id="Z6m-vz-IiE"/>
+                                                <constraint firstItem="EI6-B8-5El" firstAttribute="centerX" secondItem="iNb-n0-JCM" secondAttribute="centerX" id="bEF-yG-JzA"/>
                                                 <constraint firstAttribute="bottom" secondItem="EI6-B8-5El" secondAttribute="bottom" constant="10" id="gTO-3L-YgX"/>
                                                 <constraint firstItem="IYg-xv-LVY" firstAttribute="leading" secondItem="iNb-n0-JCM" secondAttribute="leading" constant="10" id="gZJ-cR-yqg"/>
                                                 <constraint firstItem="EI6-B8-5El" firstAttribute="leading" secondItem="iNb-n0-JCM" secondAttribute="leading" constant="10" id="kco-Vg-6Tg"/>
@@ -322,15 +309,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Name: Developer - Bank: iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1V7-6s-BHw">
-                                                    <rect key="frame" x="20" y="6.5" width="182" height="17"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Name: Developer - Bank: iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1V7-6s-BHw">
+                                                    <rect key="frame" x="8" y="6.5" width="182" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Bank Account: 11-2222-3333-444-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZs-ij-eRH">
-                                                    <rect key="frame" x="20" y="26" width="218" height="17"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Bank Account: 11-2222-3333444-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZs-ij-eRH">
+                                                    <rect key="frame" x="8" y="26" width="213" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -350,7 +337,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvB-5T-Wq2">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvB-5T-Wq2">
                                                     <rect key="frame" x="10" y="10" width="394" height="35.5"/>
                                                     <color key="backgroundColor" red="0.066666666669999999" green="0.12549019610000001" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
@@ -362,9 +349,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VvB-5T-Wq2" firstAttribute="top" secondItem="52F-AI-P64" secondAttribute="top" constant="10" id="8w1-Yi-1BS"/>
+                                                <constraint firstItem="VvB-5T-Wq2" firstAttribute="centerX" secondItem="52F-AI-P64" secondAttribute="centerX" id="Ho3-kx-0KU"/>
                                                 <constraint firstAttribute="trailing" secondItem="VvB-5T-Wq2" secondAttribute="trailing" constant="10" id="JH1-7y-7hg"/>
                                                 <constraint firstItem="VvB-5T-Wq2" firstAttribute="leading" secondItem="52F-AI-P64" secondAttribute="leading" constant="10" id="KBm-Uz-Syn"/>
                                                 <constraint firstItem="VvB-5T-Wq2" firstAttribute="centerX" secondItem="52F-AI-P64" secondAttribute="centerX" id="miT-dL-gGQ"/>
+                                                <constraint firstItem="VvB-5T-Wq2" firstAttribute="centerX" secondItem="52F-AI-P64" secondAttribute="centerX" id="qcD-Cz-5wr"/>
                                                 <constraint firstAttribute="bottom" secondItem="VvB-5T-Wq2" secondAttribute="bottom" constant="10" id="s2V-Mp-kQb"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -378,6 +367,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dxB-8Z-66N"/>
+                    <connections>
+                        <outlet property="CVVTextField" destination="Emj-00-OaB" id="mFL-gW-I4T"/>
+                        <outlet property="cardHolderNameTextField" destination="ac8-Ff-TUn" id="a1u-6h-dAf"/>
+                        <outlet property="cardNumberTextField" destination="b7S-bq-pZX" id="35D-GV-fVE"/>
+                        <outlet property="expirationDateTextField" destination="voZ-cK-WYC" id="KTi-WG-b9A"/>
+                        <outlet property="expireDatePicker" destination="hya-As-V9A" id="nTW-iR-rlH"/>
+                        <outlet property="payPalLoginTextField" destination="IYg-xv-LVY" id="xcd-td-NLh"/>
+                        <outlet property="payPalPasswordTextField" destination="EI6-B8-5El" id="bOI-ta-K8h"/>
+                        <outlet property="paymentTypeCollectionView" destination="UHz-WO-yvB" id="7oj-iB-dCv"/>
+                        <outlet property="proceedPaymentButton" destination="VvB-5T-Wq2" id="u2y-7d-MKa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOp-Pd-pnM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,79 +8,69 @@
 import UIKit
 
 class PaymentDataTableVC: UITableViewController {
+    
+    @IBOutlet weak var paymentTypeCollectionView: UICollectionView!
+    @IBOutlet weak var cardNumberTextField: UITextField!
+    @IBOutlet weak var expirationDateTextField: UITextField!
+    @IBOutlet weak var CVVTextField: UITextField!
+    @IBOutlet weak var cardHolderNameTextField: UITextField!
+    @IBOutlet weak var expireDatePicker: UIDatePicker!
+    @IBOutlet weak var payPalLoginTextField: UITextField!
+    @IBOutlet weak var payPalPasswordTextField: UITextField!
+    @IBOutlet weak var proceedPaymentButton: UIButton!
+    
+    
+    
+    struct PropertyKeys {
+       static let paymentTypesId = "paymentCell"
+    }
+    
+    var typeOfPayment: PaymentMethods!
+    var bankPayment: BankTransferPayment!
+    var cardPayment: CardPayment?
+    var payPalPayment: PayPalPayment?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        paymentTypeCollectionView.dataSource = self
+        paymentTypeCollectionView.delegate = self
+        paymentTypeCollectionView.allowsSelection = true
 
+        
+        proceedPaymentButton.layer.cornerRadius = 15
+//        proceedPaymentButton.layer.borderWidth = 1
+        
 //        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
 
     }
 
-    // MARK: - Table view data source
+}
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+extension PaymentDataTableVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return PaymentMethods.all.count
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.paymentTypesId, for: indexPath) as? PaymentTypeCollectionViewCell {
+            let text = PaymentMethods.all[indexPath.row]
+            cell.updateView(paymentType: text)
+            
+            if cell.isSelected {
+                cell.backgroundColor = .blue
+            }
+            return cell
+        }
+        return PaymentTypeCollectionViewCell()
+        
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let type = PaymentMethods.all[indexPath.row]
+        print("clicou aqui = \(type)")
+        //collectionView.deselectItem(at: indexPath, animated: true)
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

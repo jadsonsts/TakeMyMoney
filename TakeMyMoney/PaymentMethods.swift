@@ -13,17 +13,36 @@ enum PaymentMethods {
     case bankTransfer
     
     static let all: [PaymentMethods] = [.creditCard, .payPal, .bankTransfer]
+    
+    func description() -> String {
+        switch self {
+        case .creditCard:
+            return "Credit Card"
+        case .payPal:
+            return "Paypal"
+        case .bankTransfer:
+            return "Bank Transfer"
+        }
+    }
 
 }
 
-struct Payment {
-    var cardNumber: Int?
-    var expDate: Date?
-    var CVV: Int?
-    var cardHolderName: String?
+struct CardPayment {
+    var cardNumber: Int
+    var expDate: Date
+    var CVV: Int
+    var cardHolderName: String
+}
+
+struct PayPalPayment {
     var login: String?
     var password: String?
-    var accountName: String?
-    var bankName: String?
-    var accountNumber: String?
 }
+
+struct BankTransferPayment {
+    var accountName = "Develeper"
+    var bankName = "iOS"
+    var accountNumber = "11-2222-3333444-0"
+}
+
+
