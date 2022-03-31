@@ -58,14 +58,14 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="paymentCell" id="qtP-3I-wN7" customClass="PaymentTypeCollectionViewCell" customModule="TakeMyMoney" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="53"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="95" height="53"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mOI-Qo-1nM">
-                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="53"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="95" height="53"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jA-1v-Wdv">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="53"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jA-1v-Wdv">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="95" height="53"/>
                                                                         <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                                                                 </constraints>
                                                             </collectionViewCellContentView>
                                                             <color key="backgroundColor" red="1" green="0.36470588240000001" blue="0.63529411759999999" alpha="0.79643522349999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                            <size key="customSize" width="100" height="53"/>
+                                                            <size key="customSize" width="95" height="53"/>
                                                             <connections>
                                                                 <outlet property="typeName" destination="0jA-1v-Wdv" id="upp-EF-zNC"/>
                                                             </connections>
@@ -169,7 +169,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="nHd-1Q-XGy"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mQl-Sn-oFq">
@@ -247,6 +247,9 @@
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="hya-As-V9A">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                    <connections>
+                                                        <action selector="datePickerValueChanged:" destination="pMf-yD-7eJ" eventType="valueChanged" id="RdN-Mr-c6I"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -310,14 +313,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Name: Developer - Bank: iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1V7-6s-BHw">
-                                                    <rect key="frame" x="8" y="6.5" width="182" height="17"/>
+                                                    <rect key="frame" x="20" y="6.5" width="182" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Bank Account: 11-2222-3333444-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZs-ij-eRH">
-                                                    <rect key="frame" x="8" y="26" width="213" height="17"/>
+                                                    <rect key="frame" x="20" y="26" width="213" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -345,6 +348,9 @@
                                                     <state key="normal" title="Proceed to Confirm">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="proceedButtonTapped:" destination="pMf-yD-7eJ" eventType="touchUpInside" id="3zB-a2-brx"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
