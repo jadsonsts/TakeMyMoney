@@ -32,6 +32,7 @@ struct CardPayment {
     var expDate: Date
     var CVV: Int
     var cardHolderName: String
+    var saveCard: Bool
 }
 
 struct PayPalPayment {

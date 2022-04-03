@@ -10,9 +10,10 @@
 		DF1DFBC627F1CA090033DF76 /* PaymentDataTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1DFBC527F1CA090033DF76 /* PaymentDataTableVC.swift */; };
 		DF1DFBC827F315850033DF76 /* PaymentMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1DFBC727F315850033DF76 /* PaymentMethods.swift */; };
 		DF1DFBCA27F46FF50033DF76 /* PaymentTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1DFBC927F46FF50033DF76 /* PaymentTypeCollectionViewCell.swift */; };
+		DF1FA27B27F9B7E10027EEFC /* PaymentTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1FA27A27F9B7E10027EEFC /* PaymentTableVC.swift */; };
+		DF1FA27F27F9B9860027EEFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9C376C27F0422B000BADC5 /* Main.storyboard */; };
 		DF9C376727F0422B000BADC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C376627F0422B000BADC5 /* AppDelegate.swift */; };
 		DF9C376927F0422B000BADC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C376827F0422B000BADC5 /* SceneDelegate.swift */; };
-		DF9C376E27F0422B000BADC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9C376C27F0422B000BADC5 /* Main.storyboard */; };
 		DF9C377027F0422D000BADC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF9C376F27F0422D000BADC5 /* Assets.xcassets */; };
 		DF9C377327F0422D000BADC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9C377127F0422D000BADC5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -21,6 +22,7 @@
 		DF1DFBC527F1CA090033DF76 /* PaymentDataTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDataTableVC.swift; sourceTree = "<group>"; };
 		DF1DFBC727F315850033DF76 /* PaymentMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethods.swift; sourceTree = "<group>"; };
 		DF1DFBC927F46FF50033DF76 /* PaymentTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF1FA27A27F9B7E10027EEFC /* PaymentTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableVC.swift; sourceTree = "<group>"; };
 		DF9C376327F0422B000BADC5 /* TakeMyMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMyMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF9C376627F0422B000BADC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF9C376827F0422B000BADC5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF1FA27C27F9B89B0027EEFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF1DFBC727F315850033DF76 /* PaymentMethods.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF1FA27D27F9B8A50027EEFC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF1DFBC927F46FF50033DF76 /* PaymentTypeCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF1FA27E27F9B8AD0027EEFC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF1DFBC527F1CA090033DF76 /* PaymentDataTableVC.swift */,
+				DF1FA27A27F9B7E10027EEFC /* PaymentTableVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		DF9C375A27F0422B000BADC5 = {
 			isa = PBXGroup;
 			children = (
@@ -61,10 +88,10 @@
 			isa = PBXGroup;
 			children = (
 				DF9C376627F0422B000BADC5 /* AppDelegate.swift */,
-				DF1DFBC727F315850033DF76 /* PaymentMethods.swift */,
 				DF9C376827F0422B000BADC5 /* SceneDelegate.swift */,
-				DF1DFBC527F1CA090033DF76 /* PaymentDataTableVC.swift */,
-				DF1DFBC927F46FF50033DF76 /* PaymentTypeCollectionViewCell.swift */,
+				DF1FA27C27F9B89B0027EEFC /* Model */,
+				DF1FA27D27F9B8A50027EEFC /* View */,
+				DF1FA27E27F9B8AD0027EEFC /* Controller */,
 				DF9C376C27F0422B000BADC5 /* Main.storyboard */,
 				DF9C376F27F0422D000BADC5 /* Assets.xcassets */,
 				DF9C377127F0422D000BADC5 /* LaunchScreen.storyboard */,
@@ -131,9 +158,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF1FA27F27F9B9860027EEFC /* Main.storyboard in Resources */,
 				DF9C377327F0422D000BADC5 /* LaunchScreen.storyboard in Resources */,
 				DF9C377027F0422D000BADC5 /* Assets.xcassets in Resources */,
-				DF9C376E27F0422B000BADC5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +173,7 @@
 			files = (
 				DF1DFBC627F1CA090033DF76 /* PaymentDataTableVC.swift in Sources */,
 				DF1DFBC827F315850033DF76 /* PaymentMethods.swift in Sources */,
+				DF1FA27B27F9B7E10027EEFC /* PaymentTableVC.swift in Sources */,
 				DF9C376727F0422B000BADC5 /* AppDelegate.swift in Sources */,
 				DF9C376927F0422B000BADC5 /* SceneDelegate.swift in Sources */,
 				DF1DFBCA27F46FF50033DF76 /* PaymentTypeCollectionViewCell.swift in Sources */,
