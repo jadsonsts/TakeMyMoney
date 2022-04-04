@@ -41,8 +41,8 @@ struct PayPalPayment {
 }
 
 struct BankTransferPayment {
-    var accountName = "Develeper"
-    var bankName = "iOS"
+    var accountName = "iOS Develeper"
+    var bankName = "Swift"
     var accountNumber = "11-2222-3333444-0"
 }
 

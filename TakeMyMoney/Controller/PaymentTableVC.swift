@@ -14,24 +14,31 @@ class PaymentTableVC: UITableViewController {
     @IBOutlet weak var payPalUserLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
     
+    var cardPayment: CardPayment? {
+        didSet {
+            cardHolderLabel.text = cardPayment?.cardHolderName
+            cardNumberLabel.text = "\(String(describing: cardPayment?.cardNumber))"
+            payPalUserLabel.text = ""
+            
+        }
+    }
+    
+    var payPal: PayPalPayment? {
+        didSet {
+            cardHolderLabel.text = ""
+            cardNumberLabel.text = ""
+            payPalUserLabel.text = payPal?.login
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        payButton.layer.borderWidth = 15
-        payButton.layer.cornerRadius = 0.5
+        payButton.layer.cornerRadius = 15
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
     @IBAction func payButtonPressed(_ sender: UIButton) {
         

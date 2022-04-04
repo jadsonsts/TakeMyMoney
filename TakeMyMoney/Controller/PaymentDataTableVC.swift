@@ -25,12 +25,30 @@ class PaymentDataTableVC: UITableViewController {
     
     struct PropertyKeys {
         static let paymentTypesId = "paymentCell"
+        static let segueToPaymentTVC = "goToPayment"
     }
     
     var typeOfPayment: PaymentMethods!
     var bankPayment: BankTransferPayment!
-    var cardPayment: CardPayment?
+    //var cardPayment: CardPayment?
+        var cardPayment: CardPayment? {
+            let cardNumber = cardNumberTextField.text ?? ""
+            let expDate = expireDatePicker.date
+            let cardHolderName = cardHolderNameTextField.text ?? ""
+            let CVV = CVVTextField.text ?? ""
+            let saveCard = saveCardInfoSwitch.isOn
+    
+            return CardPayment(cardNumber: Int(cardNumber)!,
+                               expDate: expDate,
+                               CVV: Int(CVV)!,
+                               cardHolderName: cardHolderName,
+                               saveCard: saveCard)
+        }
+    
+    
     var payPalPayment: PayPalPayment?
+    
+    
     var isEditingExpirationDate: Bool = false {
         didSet {
             tableView.beginUpdates()
@@ -51,6 +69,7 @@ class PaymentDataTableVC: UITableViewController {
         paymentTypeCollectionView.allowsSelection = true
         
         proceedPaymentButton.layer.cornerRadius = 15
+        tableView.allowsSelection = false
         
         CVVTextField.delegate = self
         cardHolderNameTextField.delegate = self
@@ -90,6 +109,22 @@ class PaymentDataTableVC: UITableViewController {
     
     @IBAction func proceedButtonTapped(_ sender: UIButton) {
         
+        performSegue(withIdentifier: PropertyKeys.segueToPaymentTVC, sender: self)
+        
+        
+        let cardNumber = cardNumberTextField.text ?? ""
+        let expDate = expireDatePicker.date
+        let cardHolderName = cardHolderNameTextField.text ?? ""
+        let CVV = CVVTextField.text ?? ""
+        let saveCard = saveCardInfoSwitch.isOn
+        
+        print("PROCEED TAPPED")
+        print("Card Number: \(cardNumber)")
+        print("Expiration date: \(expDate)")
+        print("Card Name: \(cardHolderName)")
+        print("CVV: \(CVV)")
+        print("Is save card on?: \(saveCard)")
+        
     }
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
@@ -118,10 +153,16 @@ class PaymentDataTableVC: UITableViewController {
     //    }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == PropertyKeys.segueToPaymentTVC {
+            let destinationVC = segue.destination as? PaymentDataTableVC
+            destinationVC?.cardPayment = cardPayment
+            destinationVC?.payPalPayment = payPalPayment
+        }
     }
+    
+    
     
 }
 
@@ -143,9 +184,16 @@ extension PaymentDataTableVC: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let type = PaymentMethods.all[indexPath.row]
-        print("clicou aqui = \(type)")
-        //collectionView.deselectItem(at: indexPath, animated: true)
+        let type = PaymentMethods.all[indexPath.row].description()
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        if type == PaymentMethods.description(.creditCard)() {
+            print ("Credit Card Selected")
+        } else if  type == PaymentMethods.description(.payPal)() {
+            print ("PayPal Selected")
+        } else {
+            print ("Bank Transfer Selected")
+        }
     }
     
     
@@ -164,7 +212,7 @@ extension PaymentDataTableVC: UITextFieldDelegate {
             
             return newString.length <= maxLength
         }
-
+        
         
         //format cardNumberTextField for cards
         previousTextFieldContent = textField.text;
@@ -193,16 +241,16 @@ extension PaymentDataTableVC: UITextFieldDelegate {
         
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        cardHolderNameTextField.endEditing(true)
-        payPalLoginTextField.endEditing(true)
-        payPalPasswordTextField.endEditing(true)
-        
-        if textField == payPalLoginTextField {
-            textField.resignFirstResponder()
-        }
-        return true
-    }
+    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    //        cardHolderNameTextField.endEditing(true)
+    //        payPalLoginTextField.endEditing(true)
+    //        payPalPasswordTextField.endEditing(true)
+    //
+    //        if textField == payPalLoginTextField {
+    //            textField.resignFirstResponder()
+    //        }
+    //        return true
+    //    }
     
     
     //Format card textField
