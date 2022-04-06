@@ -23,6 +23,8 @@ class PaymentDataTableVC: UITableViewController {
     private var previousTextFieldContent: String?
     private var previousSelection: UITextRange?
     
+    var selectedPaymentType = PaymentMethods.creditCard
+    
     struct PropertyKeys {
         static let paymentTypesId = "paymentCell"
         static let segueToPaymentTVC = "goToPayment"
@@ -31,19 +33,19 @@ class PaymentDataTableVC: UITableViewController {
     var typeOfPayment: PaymentMethods!
     var bankPayment: BankTransferPayment!
     //var cardPayment: CardPayment?
-        var cardPayment: CardPayment? {
-            let cardNumber = cardNumberTextField.text ?? ""
-            let expDate = expireDatePicker.date
-            let cardHolderName = cardHolderNameTextField.text ?? ""
-            let CVV = CVVTextField.text ?? ""
-            let saveCard = saveCardInfoSwitch.isOn
-    
-            return CardPayment(cardNumber: Int(cardNumber)!,
-                               expDate: expDate,
-                               CVV: Int(CVV)!,
-                               cardHolderName: cardHolderName,
-                               saveCard: saveCard)
-        }
+    var cardPayment: CardPayment? {
+        let cardNumber = cardNumberTextField.text ?? ""
+        let expDate = expireDatePicker.date
+        let cardHolderName = cardHolderNameTextField.text ?? ""
+        let CVV = CVVTextField.text ?? ""
+        let saveCard = saveCardInfoSwitch.isOn
+        
+        return CardPayment(cardNumber: Int(cardNumber)!,
+                           expDate: expDate,
+                           CVV: Int(CVV)!,
+                           cardHolderName: cardHolderName,
+                           saveCard: saveCard)
+    }
     
     
     var payPalPayment: PayPalPayment?
@@ -56,10 +58,11 @@ class PaymentDataTableVC: UITableViewController {
         }
     }
     
-    //    var cardRowSection = (row: 1, section: 2)
-    //    var expirationDateRowSection = (row: 1, section: 3)
-    //    var paypalRowSection = (row: 1, section: 4)
-    //    var bankTransferRowSection = (row: 1, section: 5)
+    
+    var cardRowSection = IndexPath(row: 1, section: 2)
+    var expirationDateRowSection = IndexPath(row: 1, section: 3)
+    var paypalRowSection = IndexPath(row: 1, section: 4)
+    var bankTransferRowSection = IndexPath(row: 1, section: 5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,8 +71,7 @@ class PaymentDataTableVC: UITableViewController {
         paymentTypeCollectionView.delegate = self
         paymentTypeCollectionView.allowsSelection = true
         
-        proceedPaymentButton.layer.cornerRadius = 15
-        tableView.allowsSelection = false
+        updateViews()
         
         CVVTextField.delegate = self
         cardHolderNameTextField.delegate = self
@@ -78,6 +80,35 @@ class PaymentDataTableVC: UITableViewController {
         //        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         
+    }
+    
+    func updateViews() {
+        
+        let cornerRadius = 15.0
+        let borderWidth = 1.0
+        let colour = UIColor.systemGray5.cgColor
+        
+        proceedPaymentButton.layer.cornerRadius = cornerRadius
+        tableView.allowsSelection = false
+        
+        cardNumberTextField.layer.cornerRadius = cornerRadius
+        cardNumberTextField.layer.borderWidth = borderWidth
+        cardNumberTextField.layer.borderColor = colour
+        cardHolderNameTextField.layer.cornerRadius = cornerRadius
+        cardHolderNameTextField.layer.borderWidth = borderWidth
+        cardHolderNameTextField.layer.borderColor = colour
+        CVVTextField.layer.cornerRadius = cornerRadius
+        CVVTextField.layer.borderWidth = borderWidth
+        CVVTextField.layer.borderColor = colour
+        expirationDateTextField.layer.cornerRadius = cornerRadius
+        expirationDateTextField.layer.borderWidth = borderWidth
+        expirationDateTextField.layer.borderColor = colour
+        payPalLoginTextField.layer.cornerRadius = cornerRadius
+        payPalLoginTextField.layer.borderWidth = borderWidth
+        payPalLoginTextField.layer.borderColor = colour
+        payPalPasswordTextField.layer.cornerRadius = cornerRadius
+        payPalPasswordTextField.layer.borderWidth = borderWidth
+        payPalPasswordTextField.layer.borderColor = colour
     }
     
     //    func updateView() {
@@ -134,30 +165,33 @@ class PaymentDataTableVC: UITableViewController {
     
     //MARK: - Delegate Methods
     
-    //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        switch (indexPath.row, indexPath.section) {
-    //        case (cardRowSection.row, cardRowSection.section):
-    //            return 280
-    //        case (expirationDateRowSection.row, expirationDateRowSection.section):
-    //            return expireDatePicker.frame.height
-    //
-    //        case (paypalRowSection.row, paypalRowSection.section):
-    //            return 130
-    //
-    //        case (bankTransferRowSection.row, bankTransferRowSection.section):
-    //            return 52
-    //
-    //        default:
-    //            return 280.0
-    //        }
-    //    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch selectedPaymentType {
+        case .creditCard: if indexPath.section == paypalRowSection.section || indexPath.section == bankTransferRowSection.section {
+            return 0
+        }
+        case .payPal:
+            if indexPath.section == cardRowSection.section  || indexPath.section == bankTransferRowSection.section {
+//                if indexPath.section == expirationDateRowSection.section {
+//                    return 0
+//                }
+                return 0
+            }
+        case .bankTransfer:
+            if indexPath.section == cardRowSection.section || indexPath.section == paypalRowSection.section {
+                return 0
+            }
+            
+        }
+        return 44.0
+    }
     
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == PropertyKeys.segueToPaymentTVC {
             let destinationVC = segue.destination as? PaymentDataTableVC
-            destinationVC?.cardPayment = cardPayment
+            //            destinationVC?.cardPayment = cardPayment
             destinationVC?.payPalPayment = payPalPayment
         }
     }
@@ -168,15 +202,16 @@ class PaymentDataTableVC: UITableViewController {
 
 extension PaymentDataTableVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PaymentMethods.all.count
+        return PaymentMethods.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PropertyKeys.paymentTypesId, for: indexPath) as? PaymentTypeCollectionViewCell {
-            let text = PaymentMethods.all[indexPath.row]
+            let text = PaymentMethods.allCases[indexPath.row]
             cell.updateView(paymentType: text)
             cell.layer.cornerRadius = 15
             cell.layer.borderWidth = 0.5
+            cell.layer.borderColor = UIColor.systemGray5.cgColor
             return cell
         }
         return PaymentTypeCollectionViewCell()
@@ -184,16 +219,9 @@ extension PaymentDataTableVC: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let type = PaymentMethods.all[indexPath.row].description()
+        selectedPaymentType = PaymentMethods.allCases[indexPath.row]
         collectionView.deselectItem(at: indexPath, animated: true)
-        
-        if type == PaymentMethods.description(.creditCard)() {
-            print ("Credit Card Selected")
-        } else if  type == PaymentMethods.description(.payPal)() {
-            print ("PayPal Selected")
-        } else {
-            print ("Bank Transfer Selected")
-        }
+        tableView.reloadData()
     }
     
     
@@ -221,6 +249,7 @@ extension PaymentDataTableVC: UITextFieldDelegate {
         //Allow only letters on cardHolderNameTextField
         
         if cardHolderNameTextField.isEditing {
+            
             if range.location == 0 && string == " " { // prevent space on first character
                 return false
             }

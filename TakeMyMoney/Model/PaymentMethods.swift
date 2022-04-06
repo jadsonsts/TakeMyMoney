@@ -6,13 +6,13 @@
 //
 
 import Foundation
-
-enum PaymentMethods {
+//CaseIterable makes an array of the cases I have in the Enum and no longer need the array (change the PaymentDataTableVC)
+enum PaymentMethods: CaseIterable {
     case creditCard
     case payPal
     case bankTransfer
     
-    static let all: [PaymentMethods] = [.creditCard, .payPal, .bankTransfer]
+//    static let all: [PaymentMethods] = [.creditCard, .payPal, .bankTransfer]
     
     func description() -> String {
         switch self {
