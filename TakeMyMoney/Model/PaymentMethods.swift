@@ -29,7 +29,7 @@ enum PaymentMethods: CaseIterable {
 
 struct CardPayment {
     var cardNumber: Int
-    var expDate: Date
+    var expDate: String
     var CVV: Int
     var cardHolderName: String
     var saveCard: Bool

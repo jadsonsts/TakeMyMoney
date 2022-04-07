@@ -262,37 +262,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="aaR-pg-CCH">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="7fK-AW-yxr">
-                                        <rect key="frame" x="0.0" y="716.5" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7fK-AW-yxr" id="MoL-NQ-Zqk">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="hya-As-V9A">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <connections>
-                                                        <action selector="datePickerValueChanged:" destination="pMf-yD-7eJ" eventType="valueChanged" id="RdN-Mr-c6I"/>
-                                                    </connections>
-                                                </datePicker>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="hya-As-V9A" secondAttribute="trailing" id="7mj-Kt-gRP"/>
-                                                <constraint firstAttribute="bottom" secondItem="hya-As-V9A" secondAttribute="bottom" id="JnH-jK-b0h"/>
-                                                <constraint firstItem="hya-As-V9A" firstAttribute="top" secondItem="MoL-NQ-Zqk" secondAttribute="top" id="Rg2-3p-r9o"/>
-                                                <constraint firstItem="hya-As-V9A" firstAttribute="leading" secondItem="MoL-NQ-Zqk" secondAttribute="leading" id="iX1-g9-1HC"/>
-                                                <constraint firstItem="hya-As-V9A" firstAttribute="centerX" secondItem="MoL-NQ-Zqk" secondAttribute="centerX" id="kkf-hI-WxH"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection id="soK-bh-2WQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="130" id="taR-PE-nnt">
-                                        <rect key="frame" x="0.0" y="827.5" width="414" height="130"/>
+                                        <rect key="frame" x="0.0" y="716.5" width="414" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="taR-PE-nnt" id="iNb-n0-JCM">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
@@ -335,20 +308,20 @@
                             <tableViewSection id="4nk-IQ-5PL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="1V7-6s-BHw" detailTextLabel="VZs-ij-eRH" style="IBUITableViewCellStyleSubtitle" id="xhx-Ug-PUL">
-                                        <rect key="frame" x="0.0" y="1024.5" width="414" height="51.5"/>
+                                        <rect key="frame" x="0.0" y="913.5" width="414" height="51.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xhx-Ug-PUL" id="uhs-9D-eAg">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Name: Developer - Bank: iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1V7-6s-BHw">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Name: Developer - Bank: iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1V7-6s-BHw">
                                                     <rect key="frame" x="8" y="6.5" width="182" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                     <color key="textColor" red="1" green="0.52549019610000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Bank Account: 11-2222-3333444-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZs-ij-eRH">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Bank Account: 11-2222-3333444-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZs-ij-eRH">
                                                     <rect key="frame" x="8" y="26" width="213" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
@@ -363,13 +336,13 @@
                             <tableViewSection id="Nb7-aS-jsJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qEy-RF-Xkh">
-                                        <rect key="frame" x="0.0" y="1143" width="414" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="1032" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qEy-RF-Xkh" id="52F-AI-P64">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvB-5T-Wq2">
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VvB-5T-Wq2">
                                                     <rect key="frame" x="10" y="10" width="394" height="35.5"/>
                                                     <color key="backgroundColor" red="0.63529411759999999" green="0.82352941180000006" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="20"/>
@@ -407,7 +380,6 @@
                         <outlet property="cardHolderNameTextField" destination="ac8-Ff-TUn" id="a1u-6h-dAf"/>
                         <outlet property="cardNumberTextField" destination="b7S-bq-pZX" id="35D-GV-fVE"/>
                         <outlet property="expirationDateTextField" destination="voZ-cK-WYC" id="KTi-WG-b9A"/>
-                        <outlet property="expireDatePicker" destination="hya-As-V9A" id="nTW-iR-rlH"/>
                         <outlet property="payPalLoginTextField" destination="IYg-xv-LVY" id="xcd-td-NLh"/>
                         <outlet property="payPalPasswordTextField" destination="EI6-B8-5El" id="bOI-ta-K8h"/>
                         <outlet property="paymentTypeCollectionView" destination="UHz-WO-yvB" id="7oj-iB-dCv"/>

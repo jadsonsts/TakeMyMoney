@@ -14,7 +14,6 @@ class PaymentDataTableVC: UITableViewController {
     @IBOutlet weak var expirationDateTextField: UITextField!
     @IBOutlet weak var CVVTextField: UITextField!
     @IBOutlet weak var cardHolderNameTextField: UITextField!
-    @IBOutlet weak var expireDatePicker: UIDatePicker!
     @IBOutlet weak var payPalLoginTextField: UITextField!
     @IBOutlet weak var payPalPasswordTextField: UITextField!
     @IBOutlet weak var proceedPaymentButton: UIButton!
@@ -22,7 +21,8 @@ class PaymentDataTableVC: UITableViewController {
     
     private var previousTextFieldContent: String?
     private var previousSelection: UITextRange?
-    
+    private var datePicker = UIDatePicker()
+    private var currentSelectedItem: Int? //to change the color of the currenct selected collection view
     var selectedPaymentType = PaymentMethods.creditCard
     
     struct PropertyKeys {
@@ -35,7 +35,7 @@ class PaymentDataTableVC: UITableViewController {
     //var cardPayment: CardPayment?
     var cardPayment: CardPayment? {
         let cardNumber = cardNumberTextField.text ?? ""
-        let expDate = expireDatePicker.date
+        let expDate = expirationDateTextField.text ?? ""
         let cardHolderName = cardHolderNameTextField.text ?? ""
         let CVV = CVVTextField.text ?? ""
         let saveCard = saveCardInfoSwitch.isOn
@@ -60,25 +60,52 @@ class PaymentDataTableVC: UITableViewController {
     
     
     var cardRowSection = IndexPath(row: 1, section: 2)
-    var expirationDateRowSection = IndexPath(row: 1, section: 3)
-    var paypalRowSection = IndexPath(row: 1, section: 4)
-    var bankTransferRowSection = IndexPath(row: 1, section: 5)
+    var paypalRowSection = IndexPath(row: 1, section: 3)
+    var bankTransferRowSection = IndexPath(row: 1, section: 4)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         paymentTypeCollectionView.dataSource = self
         paymentTypeCollectionView.delegate = self
         paymentTypeCollectionView.allowsSelection = true
-        
+        createPicker()
         updateViews()
         
         CVVTextField.delegate = self
         cardHolderNameTextField.delegate = self
         cardNumberTextField.addTarget(self, action: #selector(reformatAsCardNumber), for: .editingChanged)
         
-        //        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
+        
+    }
+    
+    func createPicker() {
+        // toolbar
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        //bar button
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolbar.setItems([doneButton], animated: true)
+        //assign toolbar
+        expirationDateTextField.inputAccessoryView = toolbar
+        //assign date picker to the text field
+        expirationDateTextField.inputView = datePicker
+        //date picker mode
+        datePicker.datePickerMode = .date
+        //date picker style
+        datePicker.preferredDatePickerStyle = .wheels
+        
+    }
+    
+    @objc func donePressed() {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "MM/yyyy"
+        expirationDateTextField.text = dateFormatter.string(from: datePicker.date)
+        self.view.endEditing(true)
         
     }
     
@@ -125,13 +152,6 @@ class PaymentDataTableVC: UITableViewController {
     //        }
     //    }
     
-    func updateExpireDate() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        expirationDateTextField.text = String(dateFormatter.string(from: expireDatePicker.date).dropFirst(3))
-        
-        disableProceedButton()
-    }
     
     func disableProceedButton() {
         
@@ -144,7 +164,7 @@ class PaymentDataTableVC: UITableViewController {
         
         
         let cardNumber = cardNumberTextField.text ?? ""
-        let expDate = expireDatePicker.date
+        let expDate = expirationDateTextField.text ?? ""
         let cardHolderName = cardHolderNameTextField.text ?? ""
         let CVV = CVVTextField.text ?? ""
         let saveCard = saveCardInfoSwitch.isOn
@@ -158,10 +178,6 @@ class PaymentDataTableVC: UITableViewController {
         
     }
     
-    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
-        updateExpireDate()
-        
-    }
     
     //MARK: - Delegate Methods
     
@@ -172,28 +188,48 @@ class PaymentDataTableVC: UITableViewController {
         }
         case .payPal:
             if indexPath.section == cardRowSection.section  || indexPath.section == bankTransferRowSection.section {
-//                if indexPath.section == expirationDateRowSection.section {
-//                    return 0
-//                }
                 return 0
             }
         case .bankTransfer:
             if indexPath.section == cardRowSection.section || indexPath.section == paypalRowSection.section {
                 return 0
             }
-            
+
         }
-        return 44.0
+        
+        //change the height of section 0 and 1 (label value and the collection view)
+        if indexPath.section == 0 {
+            return 60
+        } else if indexPath.section == 1 {
+            return 70
+        }
+        
+        return UITableView.automaticDimension
     }
     
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == PropertyKeys.segueToPaymentTVC {
             let destinationVC = segue.destination as? PaymentDataTableVC
             //            destinationVC?.cardPayment = cardPayment
             destinationVC?.payPalPayment = payPalPayment
         }
+    }
+    
+    //changing space beetween sections
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 { //section value lbel
+            return 3.0
+        } else if section == 5 { //button section
+            return 1.0
+        }
+        return 1.0
+    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 5 { //button section
+            return 2.0
+        }
+        return 5.0
     }
     
     
@@ -212,7 +248,9 @@ extension PaymentDataTableVC: UICollectionViewDelegate, UICollectionViewDataSour
             cell.layer.cornerRadius = 15
             cell.layer.borderWidth = 0.5
             cell.layer.borderColor = UIColor.systemGray5.cgColor
+            cell.backgroundColor = currentSelectedItem == indexPath.row ?  UIColor(red: 254/255, green: 249/255, blue: 239/255, alpha: 0.5) : UIColor(red: 162/255, green: 210/255, blue: 255/255, alpha: 0.5)
             return cell
+            //rgb(254, 249, 239)
         }
         return PaymentTypeCollectionViewCell()
         
@@ -220,7 +258,9 @@ extension PaymentDataTableVC: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedPaymentType = PaymentMethods.allCases[indexPath.row]
+        currentSelectedItem = indexPath.row
         collectionView.deselectItem(at: indexPath, animated: true)
+        collectionView.reloadData()
         tableView.reloadData()
     }
     
@@ -270,16 +310,14 @@ extension PaymentDataTableVC: UITextFieldDelegate {
         
     }
     
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //        cardHolderNameTextField.endEditing(true)
-    //        payPalLoginTextField.endEditing(true)
-    //        payPalPasswordTextField.endEditing(true)
-    //
-    //        if textField == payPalLoginTextField {
-    //            textField.resignFirstResponder()
-    //        }
-    //        return true
-    //    }
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.endEditing(true)
+    
+            if textField == payPalLoginTextField {
+                textField.resignFirstResponder()
+            }
+            return true
+        }
     
     
     //Format card textField
