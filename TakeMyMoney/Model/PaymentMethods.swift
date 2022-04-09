@@ -27,17 +27,31 @@ enum PaymentMethods: CaseIterable {
 
 }
 
-struct CardPayment {
+class CardPayment {
     var cardNumber: Int
     var expDate: String
     var CVV: Int
     var cardHolderName: String
     var saveCard: Bool
+    
+    init(cardNumber: Int, expDate: String, CVV: Int, cardHolderName: String, saveCard: Bool) {
+        self.cardNumber = cardNumber
+        self.expDate = expDate
+        self.CVV = CVV
+        self.cardHolderName = cardHolderName
+        self.saveCard = saveCard
+        
+    }
 }
 
-struct PayPalPayment {
-    var login: String?
-    var password: String?
+class PayPalPayment {
+    var login: String
+    var password: String
+    
+    init(login: String, password: String) {
+        self.login = login
+        self.password = password
+    }
 }
 
 struct BankTransferPayment {
