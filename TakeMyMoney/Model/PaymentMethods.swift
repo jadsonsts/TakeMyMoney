@@ -24,17 +24,28 @@ enum PaymentMethods: CaseIterable {
             return "Bank Transfer"
         }
     }
+    
+    func imageView() -> String {
+        switch self {
+        case .creditCard:
+            return "creditcard.fill"
+        case .payPal:
+            return "paypal"
+        case .bankTransfer:
+            return "banknote.fill"
+        }
+    }
 
 }
 
 class CardPayment {
-    var cardNumber: Int
+    var cardNumber: String
     var expDate: String
     var CVV: Int
     var cardHolderName: String
     var saveCard: Bool
     
-    init(cardNumber: Int, expDate: String, CVV: Int, cardHolderName: String, saveCard: Bool) {
+    init(cardNumber: String, expDate: String, CVV: Int, cardHolderName: String, saveCard: Bool) {
         self.cardNumber = cardNumber
         self.expDate = expDate
         self.CVV = CVV
@@ -54,10 +65,18 @@ class PayPalPayment {
     }
 }
 
-struct BankTransferPayment {
-    var accountName = "iOS Develeper"
-    var bankName = "Swift"
-    var accountNumber = "11-2222-3333444-0"
+class BankTransferPayment {
+    var accountName: String
+    var bankName: String
+    var accountNumber: String
+    
+    init(accountName: String, bankName: String, accountNumber: String) {
+        self.accountName = accountName
+        self.bankName = bankName
+        self.accountNumber = accountNumber
+    }
+    
+    
 }
 
 

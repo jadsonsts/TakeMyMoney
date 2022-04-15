@@ -11,68 +11,47 @@ class PaymentTableVC: UITableViewController {
     
     @IBOutlet weak var cardHolderLabel: UILabel!
     @IBOutlet weak var cardNumberLabel: UILabel!
-    @IBOutlet weak var payPalUserLabel: UILabel!
+    @IBOutlet weak var paymentImageView: UIImageView!
     @IBOutlet weak var payButton: UIButton!
     
-    var selectedPaymentType = PaymentMethods.creditCard
+    var selectedPaymentType: PaymentMethods!
+    var paymentInfo: PaymentDetails!
     
-    var cardPayment: CardPayment? {
-        didSet {
-            showCreditCard()
-        }
-    }
-    
-    var payPal: PayPalPayment? {
-        didSet {
-            showPayPal()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        cardHolderLabel.text = cardPayment?.cardHolderName
-        let cardNumberString = cardPayment?.cardNumber
-        cardNumberLabel.text = "\(String(describing: cardNumberString))"
+        var paymentIconName = ""
+        switch selectedPaymentType {
+        case .creditCard:
+            paymentIconName = "creditcard.png"
+        case .payPal:
+            paymentIconName = "paypal.png"
+        case .bankTransfer:
+            paymentIconName = "banktransfer.png"
+        default:
+             break
+        }
+        
+        paymentImageView.image = UIImage(named: paymentIconName)
+        cardHolderLabel.text = paymentInfo.username
+        cardNumberLabel.text = paymentInfo.payDetails
+        let color = UIColor(red: 255/255, green: 134/255, blue: 94/255, alpha: 1.0)
+        cardNumberLabel.textColor = color
+        cardHolderLabel.textColor = color
         
         payButton.layer.cornerRadius = 15
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
-    func showCreditCard() {
-        cardHolderLabel.text = cardPayment?.cardHolderName
-        cardNumberLabel.text = "\(String(describing: cardPayment?.cardNumber))"
-        payPalUserLabel.text = ""
-    }
-    
-    func showPayPal() {
-        cardHolderLabel.text = ""
-        cardNumberLabel.text = ""
-        payPalUserLabel.text = payPal?.login
-    }
-    
-    func showBankTransfer(){
-        
-    }
-
-    // MARK: - Table view data source
-
     @IBAction func payButtonPressed(_ sender: UIButton) {
-        
+        let alert = UIAlertController(title: "Sorry 😢", message: "Your payment has failed" , preferredStyle: .alert)
+        let action = UIAlertAction(title: "Try Again", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Delegate Methods
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        switch selectedPaymentType {
-//        case .creditCard:
-//            return 50
-//        case .payPal:
-//            return 50
-//        case .bankTransfer:
-//            return 50
-//        }
-//    }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 3.0

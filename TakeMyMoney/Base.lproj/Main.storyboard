@@ -320,14 +320,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Name: Developer - Bank: iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1V7-6s-BHw">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Name: Developer - Bank: iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1V7-6s-BHw">
                                                     <rect key="frame" x="20" y="6.5" width="182" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
                                                     <color key="textColor" red="1" green="0.52549019610000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Bank Account: 11-2222-3333444-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZs-ij-eRH">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Bank Account: 11-2222-3333444-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VZs-ij-eRH">
                                                     <rect key="frame" x="20" y="26" width="213" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="15"/>
@@ -505,7 +505,7 @@
                                                                 <constraint firstAttribute="width" constant="45" id="3K5-Bw-AsC"/>
                                                                 <constraint firstAttribute="height" constant="45" id="SPr-VG-8sZ"/>
                                                             </constraints>
-                                                            <imageReference key="image" image="creditcard.fill" catalog="system" symbolScale="small"/>
+                                                            <imageReference key="image" image="creditcard" catalog="system" symbolScale="small"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qo4-0H-tgy">
                                                             <rect key="frame" x="46" y="0.0" width="368" height="50"/>
@@ -538,101 +538,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="gmF-Cx-0X0">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="4p6-SH-LdH">
-                                        <rect key="frame" x="0.0" y="418.5" width="414" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4p6-SH-LdH" id="hoI-AJ-iuy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kVf-Xe-9KT">
-                                                    <rect key="frame" x="10" y="0.0" width="394" height="50"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="emblem-Paypal" translatesAutoresizingMaskIntoConstraints="NO" id="ZS3-62-m1F">
-                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="45" id="WJJ-mQ-aGq"/>
-                                                                <constraint firstAttribute="height" constant="45" id="riL-ZG-ye2"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="ios.developer@devslopes.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpB-t8-ZP8">
-                                                            <rect key="frame" x="50" y="0.0" width="344" height="50"/>
-                                                            <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.99607843137254903" green="0.97647058823529409" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="kVf-Xe-9KT" firstAttribute="top" secondItem="hoI-AJ-iuy" secondAttribute="top" id="dBq-tv-CYK"/>
-                                                <constraint firstItem="kVf-Xe-9KT" firstAttribute="leading" secondItem="hoI-AJ-iuy" secondAttribute="leading" constant="10" id="kQX-Wm-p5V"/>
-                                                <constraint firstAttribute="trailing" secondItem="kVf-Xe-9KT" secondAttribute="trailing" constant="10" id="sAe-GI-crK"/>
-                                                <constraint firstAttribute="bottom" secondItem="kVf-Xe-9KT" secondAttribute="bottom" id="xHs-UM-DdV"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="Gtf-GD-Jth">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="AJH-HU-S6W">
-                                        <rect key="frame" x="0.0" y="535.5" width="414" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AJH-HU-S6W" id="mDo-zm-v0I">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="u7T-UI-e2Z">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1TD-Ai-FZU">
-                                                            <rect key="frame" x="0.0" y="3.5" width="45" height="43"/>
-                                                            <color key="tintColor" red="1" green="0.52549019610000003" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="45" id="54B-jx-Z7R"/>
-                                                                <constraint firstAttribute="width" constant="45" id="MiU-Ko-bKf"/>
-                                                            </constraints>
-                                                            <imageReference key="image" image="banknote.fill" catalog="system" symbolScale="small"/>
-                                                        </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fyp-4X-rfX">
-                                                            <rect key="frame" x="46" y="0.0" width="368" height="50"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name: Developer - Bank: iOS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r61-ZX-Iub">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="368" height="30"/>
-                                                                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank Account: 11-2222-3333444-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kan-BI-WLO">
-                                                                    <rect key="frame" x="0.0" y="31" width="368" height="19"/>
-                                                                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="17"/>
-                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.99607843139999996" green="0.97647058819999999" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="u7T-UI-e2Z" firstAttribute="leading" secondItem="mDo-zm-v0I" secondAttribute="leading" id="5S8-PM-v24"/>
-                                                <constraint firstAttribute="bottom" secondItem="u7T-UI-e2Z" secondAttribute="bottom" id="8tk-ov-6cI"/>
-                                                <constraint firstItem="u7T-UI-e2Z" firstAttribute="top" secondItem="mDo-zm-v0I" secondAttribute="top" id="BgH-QE-8ip"/>
-                                                <constraint firstAttribute="trailing" secondItem="u7T-UI-e2Z" secondAttribute="trailing" id="Jcd-CT-n6z"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection id="c1O-Nh-q8g">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="0JV-Sg-7gH">
-                                        <rect key="frame" x="0.0" y="652.5" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="418.5" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0JV-Sg-7gH" id="mpV-9P-qlz">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -674,7 +583,7 @@
                         <outlet property="cardHolderLabel" destination="kQA-i7-hlb" id="w4r-wg-2Wj"/>
                         <outlet property="cardNumberLabel" destination="69M-T6-hMz" id="GmX-JZ-YKb"/>
                         <outlet property="payButton" destination="4al-VS-mlK" id="fhP-1W-YMP"/>
-                        <outlet property="payPalUserLabel" destination="cpB-t8-ZP8" id="ujF-Eh-feP"/>
+                        <outlet property="paymentImageView" destination="k3T-Cn-IjS" id="gWy-oK-esP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddo-i2-cJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -706,10 +615,8 @@
         <image name="Mastercard-Logo" width="3840" height="2160"/>
         <image name="New-Balance-Logo" width="3840" height="2160"/>
         <image name="Puma-logo" width="1200" height="596"/>
-        <image name="banknote.fill" catalog="system" width="128" height="78"/>
+        <image name="creditcard" catalog="system" width="128" height="88"/>
         <image name="creditcard.and.123" catalog="system" width="128" height="90"/>
-        <image name="creditcard.fill" catalog="system" width="128" height="88"/>
-        <image name="emblem-Paypal" width="2500" height="2500"/>
         <image name="visa" width="746" height="523"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

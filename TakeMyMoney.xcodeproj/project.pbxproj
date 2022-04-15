@@ -16,6 +16,8 @@
 		DF9C376927F0422B000BADC5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9C376827F0422B000BADC5 /* SceneDelegate.swift */; };
 		DF9C377027F0422D000BADC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF9C376F27F0422D000BADC5 /* Assets.xcassets */; };
 		DF9C377327F0422D000BADC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF9C377127F0422D000BADC5 /* LaunchScreen.storyboard */; };
+		DFA20F87280939720071B89F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA20F86280939720071B89F /* DataService.swift */; };
+		DFAD2D7A2805808A0041D627 /* PaymentDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAD2D792805808A0041D627 /* PaymentDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		DF9C376F27F0422D000BADC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF9C377227F0422D000BADC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF9C377427F0422D000BADC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFA20F86280939720071B89F /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		DFAD2D792805808A0041D627 /* PaymentDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				DF1DFBC727F315850033DF76 /* PaymentMethods.swift */,
+				DFAD2D792805808A0041D627 /* PaymentDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 			children = (
 				DF9C376627F0422B000BADC5 /* AppDelegate.swift */,
 				DF9C376827F0422B000BADC5 /* SceneDelegate.swift */,
+				DFA20F882809397A0071B89F /* Services */,
 				DF1FA27C27F9B89B0027EEFC /* Model */,
 				DF1FA27D27F9B8A50027EEFC /* View */,
 				DF1FA27E27F9B8AD0027EEFC /* Controller */,
@@ -98,6 +104,14 @@
 				DF9C377427F0422D000BADC5 /* Info.plist */,
 			);
 			path = TakeMyMoney;
+			sourceTree = "<group>";
+		};
+		DFA20F882809397A0071B89F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DFA20F86280939720071B89F /* DataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +191,8 @@
 				DF9C376727F0422B000BADC5 /* AppDelegate.swift in Sources */,
 				DF9C376927F0422B000BADC5 /* SceneDelegate.swift in Sources */,
 				DF1DFBCA27F46FF50033DF76 /* PaymentTypeCollectionViewCell.swift in Sources */,
+				DFAD2D7A2805808A0041D627 /* PaymentDetails.swift in Sources */,
+				DFA20F87280939720071B89F /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
