@@ -28,6 +28,7 @@ class PaymentTableVC: UITableViewController {
         case .payPal:
             paymentIconName = "paypal.png"
         case .bankTransfer:
+            payButton.setTitle("Make Transfer", for: .normal)
             paymentIconName = "banktransfer.png"
         default:
              break
